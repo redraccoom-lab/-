@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PickDeal - 상세페이지</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+        }
+
+        body {
+            background-color: #1a1d23;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 헤더 스타일 통일 */
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e2229;    
+            padding: 15px 30px;           
+            border-bottom: 1px solid #2e343e;   
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-label {
+            color: white; 
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .main-link {
+            color: #3B82F6;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            border: 1px solid #3B82F6;
+            padding: 6px 15px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .main-link:hover {
+            background-color: #3B82F6;
+            color: white;
+        }
+
+        /* 메인 컨텐츠 영역 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .detail-card {
+            width: 100%;
+            max-width: 850px;
+            background-color: #2a2e35;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .top-section {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* 왼쪽 이미지 영역 */
+        .image-container {
+            flex: 0 0 320px;
+        }
+
+        .image-box {
+            width: 320px;
+            height: 320px;
+            background-color: #3e444e;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #bbb;
+            border: 1px solid #4f5661;
+        }
+
+        .stats-text {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #888;
+            text-align: center;
+        }
+
+        /* 오른쪽 정보 영역 */
+        .info-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .title { font-size: 28px; font-weight: bold; margin-bottom: 5px; }
+        .price { font-size: 22px; color: #3B82F6; font-weight: 700; }
+        .location, .seller { font-size: 16px; color: #ccc; display: flex; align-items: center; gap: 8px; }
+
+        /* 수정하기 버튼 */
+        .btn-edit {
+            margin-top: 20px;
+            width: fit-content;
+            background-color: #4f5661;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-edit:hover {
+            background-color: #3B82F6;
+        }
+
+        /* 하단 상세 설명 섹션 */
+        .description-section {
+            border-top: 1px solid #3e444e;
+            padding-top: 30px;
+            margin-top: 10px;
+        }
+
+        .description-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #3B82F6;
+        }
+
+        .description-text {
+            line-height: 1.6;
+            color: #ddd;
+            font-size: 15px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="top-label">PickDeal</div>
+        <div class="nav-right">
+            <a href="#" id="mainLink" class="main-link">메인으로 가기</a>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="main-content">
+        <div class="detail-card">
+            
+            <div class="top-section">
+                <!-- 왼쪽: 이미지 및 통계 -->
+                <div class="image-container">
+                    <div class="image-box">
+                     
+                        <i class="fa-regular fa-image" style="font-size: 40px; margin-bottom: 10px;"></i>
+                    </div>
+                    <p class="stats-text">
+                        <i class="fa-regular fa-clock"></i> 3시간 전 &nbsp;|&nbsp; 
+                        <i class="fa-regular fa-eye"></i> 조회 12 &nbsp;|&nbsp; 
+                        <i class="fa-regular fa-heart"></i> 찜 7
+                    </p>
+                </div>
+
+                <!-- 오른쪽: 상품 정보 -->
+                <div class="info-box">
+                    <h1 class="title">아이폰 13 판매</h1>
+                    <p class="price">300,000원</p>
+                    <div class="location">
+                        <i class="fa-solid fa-location-dot"></i> 대전 유성구
+                    </div>
+                    <div class="seller">
+                        <i class="fa-solid fa-user"></i> 판매자: 홍길동
+                    </div>
+                    <!-- 수정 권한이 있을 때만 보이는 버튼 -->
+                    <button class="btn-edit" onclick="location.href='change.html'">수정하기</button>
+                </div>
+            </div>
+
+            <!-- 하단: 상세 설명 -->
+            <div class="description-section">
+                <h3 class="description-title">상품 설명</h3>
+                <div class="description-text">
+                    아이폰 13 핑크 색상 판매합니다.
+                    상태 아주 깨끗하고 배터리 효율도 좋습니다.
+                    구성품은 풀박스 그대로 드려요.
+                    직거래는 유성구 근처에서 가능합니다. 편하게 연락주세요!
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // 메인 링크 동적 설정 (로그인 여부)
+        window.onload = function() {
+            const mainLink = document.getElementById('mainLink');
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            
+            if (isLoggedIn) {
+                mainLink.href = "usermain.html";
+            } else {
+                mainLink.href = "guestmain.html";
+            }
+        };
+    </script>
+</body>
+</html>

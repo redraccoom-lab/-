@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PickDeal - 로그인</title>
+    <!-- 폰트 및 아이콘 추가 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 기본 초기화 - 게시물 등록 페이지와 통일 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+        }
+
+        body {
+            background-color: #1a1d23;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 헤더 스타일 - 게시물 등록 페이지와 동일 */
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e2229;    
+            padding: 15px 30px;           
+            border-bottom: 1px solid #2e343e;   
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-label {
+            color: white; /* 강조 파란색 */
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        /* 중앙 정렬 컨테이너 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* 로그인 카드 - 게시물 등록 카드와 디자인 통일 */
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            background-color: #2a2e35;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .login-title {
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* 입력 그룹 스타일 */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            background-color: #3e444e;
+            border: 1px solid #4f5661;
+            border-radius: 8px;
+            padding: 14px;
+            color: white;
+            outline: none;
+            font-size: 15px;
+            width: 100%;
+        }
+
+        .input-group input::placeholder {
+            color: #bbb;
+        }
+
+        /* 로그인 버튼 - 등록하기 버튼과 동일한 파란색 */
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: none;
+            background-color: #3B82F6;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-bottom: 20px;
+        }
+
+        .login-button:hover {
+            background-color: #2563EB;
+        }
+
+        /* 하단 링크 스타일 */
+        .helper-links {
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: #94A3B8;
+        }
+
+        .helper-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .helper-links a:hover {
+            color: #3B82F6;
+        }
+
+        .divider {
+            margin: 0 8px;
+            color: #4f5661;
+        }
+
+        .signup-link {
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .signup-link a {
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* 하단 아이콘 (선택 사항) */
+        .bottom-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 30px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 헤더 (게시물 등록 페이지와 동일) -->
+    <header class="header">
+        <div class="top-label">PickDeal</div>
+    </header>
+
+    <!-- 중앙 로그인 영역 -->
+    <main class="main-content">
+        <div class="login-card">
+            <h1 class="login-title">로그인</h1>
+
+            <form id="loginForm" action="#" method="post">
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="이메일" required>
+                    <input type="password" id="password" name="password" placeholder="비밀번호" required>
+                </div>
+
+                <button type="submit" class="login-button">로그인</button>
+
+                <div class="helper-links">
+                    <a href="#">아이디 찾기</a>
+                    <span class="divider">|</span>
+                    <a href="#">비밀번호 찾기</a>
+                </div>
+                
+                <div class="signup-link">
+                    계정이 없으신가요? <a href="#">회원가입</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- 하단 장식용 별 아이콘 -->
+    <div class="bottom-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#3B82F6">
+            <path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.385a.563.563 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+        </svg>
+    </div>
+
+    <script src="../js/loginpage.js"></script>
+</body>
+</html>

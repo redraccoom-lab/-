@@ -1,0 +1,352 @@
+
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121418; /* 배경색 */
+    color: #ffffff;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    /*max-width: 1100px;*/
+    margin: 0 auto;
+    /*padding: 20px;*/
+}
+
+/* --- 상단 헤더 박스 스타일 (수정됨) --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e2229;    
+    padding: 12px 30px;           
+    border-radius: 12px;          
+    border: 1px solid #2e343e;   
+    margin-bottom: 20px;          
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+}
+
+/* 로고 스타일 (Pick:하얀색, Deal:파란색 분리) */
+.logo, .banner-title {
+    color: #4a90e2; /* Deal 부분 파란색 */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo {
+    font-size: 22px;
+}
+
+.logo .white-text, 
+.banner-title .white-text {
+    color: #ffffff !important; /* Pick 부분 하얀색 */
+}
+
+/* 검색창 스타일 (디자인 매칭) */
+.search-bar {
+    position: relative;
+    width: 450px;
+}
+
+.search-bar input {
+    width: 100%;
+    background-color: #121418; /* 헤더보다 더 어두운 배경 */
+    border: 1px solid #333;
+    border-radius: 25px;       /* 둥근 검색창 */
+    padding: 10px 20px;
+    color: white;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+    border-color: #4a90e2;     /* 클릭 시 강조색 */
+}
+
+.search-bar i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666; /* 돋보기 아이콘 */
+}
+
+/* 우측 메뉴 */
+.user-nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 20px;
+    transition: color 0.2s;
+}
+
+.user-nav a:hover {
+    color: #ffffff;
+}
+
+/* 배너 섹션 */
+.banner {
+    width: 100%;
+    background: linear-gradient(to right, #242932, #1a1e23); /* 그라데이션 배너 */
+    border-radius: 20px;
+    padding: 40px 60px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #2e343e;
+}
+
+/*.banner-title {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.banner-sub {
+    color: #888;
+}
+
+.banner-img img {
+    height: 180px;
+    border-radius: 10px;
+}
+*/
+
+
+.banner {
+    position: relative; 
+    width: 100%;      
+    height: 300px;    
+    
+    
+    background-image: url('../images/main-banner.jpg'); 
+    
+
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+    
+    /* 기존 스타일 유지 */
+    border-radius: 20px;          
+    margin: 20px 0;               
+    border: 1px solid #2e343e;   
+    overflow: hidden;             
+    
+  
+    display: block; 
+    padding: 0;                  
+}
+
+
+.banner-text {
+    position: absolute;  
+    top: 50%;            
+    left: 60px;          
+    transform: translateY(-50%); 
+    
+    z-index: 10;        
+    max-width: 50%;      
+    
+    
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); 
+}
+
+/* 로고 스타일 (기존 유지) */
+.logo, .banner-title {
+    color: #4a90e2; /* Deal 파란색 */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.banner-title {
+    font-size: 36px;       
+    margin-bottom: 5px;
+}
+
+.logo .white-text, 
+.banner-title .white-text {
+    color: #ffffff !important; /* Pick 하얀색 */
+}
+
+.banner-sub {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+
+/* 카테고리 박스 */
+.categories {
+    display: flex;
+    justify-content: space-around;
+    background-color: #1e2229;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border: 1px solid #2e343e;
+}
+
+.cat-item {
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cat-item.active {
+    color: #4a90e2;
+    font-weight: bold;
+}
+
+.cat-item i {
+    margin-right: 6px;
+}
+
+/* 상품 그리드 */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: #1e2229;
+    border-radius: 20px;
+    padding: 15px;
+    border: 1px solid #2e343e;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #4a90e2;
+}
+
+.card-image {
+    background-color: #2c313a;
+    height: 180px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.item-name {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.item-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.item-loc {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #888;
+    border-top: 1px solid #2e343e;
+    padding-top: 10px;
+}
+
+.fa-star {
+    color: #ffd700;
+}
+
+.location-setting {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: #121418; 
+    border-radius: 20px;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.location-setting:hover {
+    border-color: #4a90e2;
+    color: #4a90e2 !important;
+}
+
+.location-setting i {
+    color: #4a90e2; 
+}
+.card-link {
+    text-decoration: none; /* 밑줄 제거 */
+    color: white;          
+    display: block;       
+}
+
+
+.card-link:hover, 
+.card-link:visited, 
+.card-link:active {
+    color: white;          /* 방문 후나 클릭 시에도 계속 하얀색 유지 */
+    text-decoration: none;
+}
+
+/*위치 관련 css*/
+.address-popup {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background-color: #2a2e35;
+    border: 1px solid #444;
+    padding: 15px;
+    border-radius: 12px;
+    z-index: 1000;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    flex-direction: column;
+    width: 220px;
+    display: none;
+}
+
+.popup-header { color: white; font-size: 13px; font-weight: bold; margin-bottom: 10px; }
+
+#gpsBtn {
+    width: 100%;
+    background: #444;
+    color: #ffcc00;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.input-section { display: flex; gap: 5px; }
+
+.input-section input {
+    background: #1a1d23;
+    border: 1px solid #555;
+    color: white;
+    padding: 6px;
+    border-radius: 4px;
+    flex: 1;
+    font-size: 12px;
+}
+
+#locationSaveBtn {
+    background: #ffcc00;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}

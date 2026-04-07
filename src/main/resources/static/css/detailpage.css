@@ -1,0 +1,188 @@
+/* ========== 상세 페이지 전용 스타일 (메인 테마 적용) =========== */
+
+body {
+    background-color: #0f1114; 
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+}
+
+
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e2229;   
+    padding: 12px 30px;           
+    border-radius: 12px;          
+    border: 1px solid #2e343e;   
+    margin-bottom: 20px;          
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+}
+
+
+.logo {
+    color: #4a90e2 !important;     
+    font-weight: bold;
+    font-size: 28px;
+    text-decoration: none;
+}
+
+.logo .white-text {
+    color: #ffffff !important;     
+}
+
+/* 버튼 내비게이션 */
+.user-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-item {
+    background: #252a31;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #fff !important;
+    text-decoration: none;
+}
+
+/* 3. 상세 페이지 카드  */
+.detail-card {
+    background: #ffffff;          
+    border-radius: 24px;
+    padding: 40px;
+    margin: 20px auto 60px;       
+    max-width: 1000px;            
+    border: 1px solid #e1e4e8;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+
+/* 가로 배치 구조 */
+.detail-content {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* 이미지 영역 */
+.product-visual {
+    flex: 1.2;
+}
+
+.img-display {
+    background: #f8f9fa;
+    border-radius: 20px;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+}
+
+.img-display img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 알약 모양 통계 바 */
+.product-metadata-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f1f3f5;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 10px 25px;
+    margin-top: 15px;
+    color: #495057;
+    font-size: 14px;
+    width: fit-content;
+    gap: 30px;
+}
+
+/* 정보 영역 */
+.product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #212529; 
+    margin-bottom: 10px;
+}
+
+.price-tag {
+    font-size: 36px;
+    font-weight: 800;
+    color: #4a90e2;
+    margin-bottom: 30px;
+}
+
+/* 채팅하기 버튼 */
+.action-btn {
+    background: #1d3557;
+    color: #ffffff;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action-btn:hover {
+    background: #4a90e2;
+    transform: translateY(-2px);
+}
+
+/* 설명 영역 */
+.description-section {
+    border-top: 1px solid #dee2e6;
+    padding-top: 30px;
+}
+
+.desc-title {
+    font-size: 20px;
+    color: #212529;
+    margin-bottom: 15px;
+}
+
+.desc-text {
+    color: #495057;
+    line-height: 1.8;
+    font-size: 16px;
+}
+.img-display {
+    width: 100%;           
+    max-width: 500px;      
+    height: 400px;         
+    margin: 0 auto;        
+    background-color: white; 
+    border-radius: 12px;    /* 모서리 둥글게 */
+    overflow: hidden;       
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 실제 이미지 스타일 */
+.img-display img {
+    height: 100%;          
+    object-fit: contain;    
+    transition: transform 0.3s ease; 
+}
+
+
+.img-display img:hover {
+    transform: scale(1.05);
+}

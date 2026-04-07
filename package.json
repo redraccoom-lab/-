@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.0",
+    "express": "^5.2.1",
+    "mysql2": "^3.20.0"
+  }
+}

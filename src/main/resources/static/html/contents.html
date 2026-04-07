@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PickDeal - 게시물 등록</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 기본 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+        }
+
+        body {
+            background-color: #1a1d23;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 헤더 스타일 */
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1e2229;    
+            padding: 15px 30px;           
+            border-bottom: 1px solid #2e343e;   
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-label {
+            color: white; 
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        /* 메인 버튼 스타일 */
+        .main-link {
+            color: #3B82F6;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            border: 1px solid #3B82F6;
+            padding: 6px 15px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .main-link:hover {
+            background-color: #3B82F6;
+            color: white;
+        }
+
+        /* 중앙 정렬 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* 등록 카드 */
+        .register-card {
+            width: 100%;
+            max-width: 400px;
+            background-color: #2a2e35;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .register-card h2 {
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 20px;
+        }
+
+        /* 입력창 스타일 */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .input-group input, .input-group textarea {
+            background-color: #3e444e;
+            border: 1px solid #4f5661;
+            border-radius: 10px;
+            padding: 12px;
+            color: white;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .input-group input::placeholder, .input-group textarea::placeholder {
+            color: #bbb;
+        }
+
+        /* 이미지 업로드 영역 */
+        .image-upload {
+            background-color: #3e444e;
+            border: 2px dashed #3B82F6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .image-upload:hover {
+            background-color: #4a515c;
+        }
+
+        .image-upload i {
+            font-size: 24px;
+            color: #3B82F6;
+            margin-bottom: 8px;
+        }
+
+        .image-upload p {
+            margin: 0;
+            color: #bbb;
+            font-size: 13px;
+        }
+
+        /* 버튼 그룹 */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-cancel {
+            background-color: #4f5661;
+            color: #fff;
+        }
+
+        .btn-submit {
+            background-color: #3B82F6;
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: #2563EB;
+        }
+    </style>
+</head>
+<body>
+    <!-- 상단 헤더 영역 -->
+    <header class="header">
+        <div class="top-label">PickDeal</div>
+        <div class="nav-right">
+            <!-- id="mainLink" 추가됨 -->
+            <a href="guestmain.html" id="mainLink" class="main-link">메인으로 가기</a>
+        </div>
+    </header>
+
+    <!-- 중앙 카드 영역 -->
+    <main class="main-content">
+        <div class="register-card">
+            <h2>게시물 등록</h2>
+            
+            <div class="input-group">
+                <input type="text" placeholder="제목을 입력하세요">
+                <input type="text" placeholder="가격을 입력하세요 (원)">
+                <input type="text" placeholder="거래 희망 위치">
+                
+                <div class="image-upload" onclick="document.getElementById('fileInput').click()">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>이미지 업로드 (클릭)</p>
+                    <input type="file" id="fileInput" style="display: none;">
+                </div>
+
+                <textarea rows="4" placeholder="상품에 대한 설명을 적어주세요"></textarea>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-cancel" onclick="history.back()">취소</button>
+                <!-- 등록하기 버튼 -->
+                <button class="btn btn-submit" id="submitBtn">등록하기</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+    // 1. 로그인 상태 확인 함수
+    function checkLoginStatus() {
+        return localStorage.getItem('isLoggedIn') === 'true';
+    }
+
+    // 2. 페이지 로드 시 설정
+    window.onload = function() {
+        // 메인 링크 설정
+        const mainLink = document.getElementById('mainLink');
+        if (mainLink) {
+            if (checkLoginStatus()) {
+                mainLink.href = "usermain.html";
+            } else {
+                mainLink.href = "guestmain.html";
+            }
+        }
+
+        // 3. 등록하기 버튼 클릭 이벤트 연결
+        const submitBtn = document.getElementById('submitBtn');
+        if (submitBtn) {
+            submitBtn.onclick = function() {
+                alert("수정이 완료되었습니다!");
+                // uploade.html로 이동
+                location.href = "uploade.html";
+            };
+        }
+    };
+    </script>
+</body>
+</html>

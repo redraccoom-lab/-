@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PickDeal - Welcome</title>
+   
+    <link rel="stylesheet" href="../css/guestmain.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 로그인 버튼 스타일 */
+        .login-link-btn {
+            background-color: #3B82F6;
+            color: white !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .login-link-btn:hover {
+            background-color: #2563EB;
+        }
+
+        /* 주소 설정 팝업 스타일 */
+        .address-popup {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: #2a2e35;
+            border: 1px solid #444;
+            padding: 15px;
+            border-radius: 12px;
+            z-index: 1000;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+            flex-direction: column;
+            width: 220px;
+        }
+        #gpsBtn {
+            width: 100%;
+            background: #444;
+            color: #ffcc00;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        .input-section { display: flex; gap: 5px; }
+        .input-section input {
+            background: #1a1d23;
+            border: 1px solid #555;
+            color: white;
+            padding: 6px;
+            border-radius: 4px;
+            flex: 1;
+            font-size: 12px;
+            outline: none;
+        }
+        #locationSaveBtn {
+            background: #ffcc00;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+       
+        #toast {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3B82F6;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 10000;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; bottom: 10px; }
+            to { opacity: 1; bottom: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="white-text">Pick</span>Deal 
+            </div>
+
+            <div class="location-wrapper" style="position: relative; display: inline-block; margin-left: 20px;">
+                <div class="location-setting" id="locationBtn" style="cursor: pointer; color: #aaa; font-size: 14px; display: flex; align-items: center;">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span id="location-text" style="margin-left: 5px;">역삼동</span>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i>
+                </div>
+
+                <div id="locationPopup" class="address-popup">
+                    <button id="gpsBtn"><i class="fa-solid fa-crosshairs"></i> 현재 위치로 찾기</button>
+                    <div class="input-section">
+                        <input type="text" id="locationInput" placeholder="동네를 입력하세요">
+                        <button id="locationSaveBtn">확인</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" placeholder="검색어 입력...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            
+            <div class="user-nav">
+                <a href="loginpage.html" class="login-link-btn">로그인</a>
+            </div>
+        </header>
+
+        <section class="banner">
+            <div class="banner-text">
+                <h1 class="banner-title">
+                    <span class="white-text">Pick</span>Deal
+                </h1>
+                <p class="banner-sub">안전하게 거래하세요!</p>
+            </div>
+        </section>
+
+        <nav class="categories">
+            <div class="cat-item active"><i class="fa-solid fa-globe"></i> 전체</div>
+            <div class="cat-item"><i class="fa-solid fa-laptop"></i> 전자기기</div>
+            <div class="cat-item"><i class="fa-solid fa-shirt"></i> 의류</div>
+            <div class="cat-item"><i class="fa-solid fa-ellipsis"></i> 기타</div>
+        </nav>
+
+        <main class="product-list">
+           
+            <a href="detailpage.html" class="card-link">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/140x160/2a2e35/ffffff?text=Product+1" alt="product">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="item-name">프리미엄 테크 상품</h3>
+                        <p class="item-price">300,000원</p>
+                        <p class="item-loc">대전 유성구</p>
+                        <div class="card-footer">
+                            <span>거래 상태: 판매 중</span>
+                            <span>4.5 <i class="fa-solid fa-star"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+      
+            <a href="detailpage.html" class="card-link">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://via.placeholder.com/140x160/2a2e35/ffffff?text=Product+2" alt="product">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="item-name">다크 에디션 아이템</h3>
+                        <p class="item-price">150,000원</p>
+                        <p class="item-loc">서울 강남구</p>
+                        <div class="card-footer">
+                            <span>거래 상태: 판매 중</span>
+                            <span>4.8 <i class="fa-solid fa-star"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </main>
+    </div>
+
+    <div id="toast"></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const locationBtn = document.getElementById('locationBtn');
+        const locationPopup = document.getElementById('locationPopup');
+        const gpsBtn = document.getElementById('gpsBtn');
+        const locationInput = document.getElementById('locationInput');
+        const locationSaveBtn = document.getElementById('locationSaveBtn');
+        const locationText = document.getElementById('location-text');
+        const toast = document.getElementById('toast'); 
+
+        // 토스트 알림 함수
+        function showToast(message) {
+            if (!toast) return;
+            toast.innerText = message;
+            toast.style.display = 'block';
+            toast.style.animation = 'none'; 
+            void toast.offsetWidth; 
+            toast.style.animation = 'fadeInUp 0.5s forwards'; 
+
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2500);
+        }
+
+        // 1. 상단 위치 버튼 클릭 시 팝업 열기/닫기
+        locationBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isVisible = locationPopup.style.display === 'flex';
+            locationPopup.style.display = isVisible ? 'none' : 'flex';
+        });
+
+        // 2. 현재 위치(GPS) 버튼 클릭 시
+        gpsBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (navigator.geolocation) {
+                gpsBtn.innerText = "위치 찾는 중...";
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        locationText.innerText = "현재 위치"; 
+                        locationText.style.color = "#ffcc00"; 
+                        locationPopup.style.display = 'none';
+                        gpsBtn.innerHTML = '<i class="fa-solid fa-crosshairs"></i> 현재 위치로 찾기';
+                        
+                        showToast("📍 현재 위치로 동네 설정이 완료되었습니다.");
+                    },
+                    (error) => {
+                        alert("위치 권한을 허용해주세요.");
+                        gpsBtn.innerHTML = '<i class="fa-solid fa-crosshairs"></i> 현재 위치로 찾기';
+                    }
+                );
+            } else {
+                alert("이 브라우저는 GPS를 지원하지 않습니다.");
+            }
+        });
+
+        // 3. 직접 입력 후 확인 버튼 클릭 시
+        locationSaveBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const inputValue = locationInput.value.trim();
+            if (inputValue !== "") {
+                locationText.innerText = inputValue;
+                locationText.style.color = "#ffcc00";
+                locationPopup.style.display = 'none';
+                locationInput.value = "";
+
+                showToast(`📍 '${inputValue}'으로 동네가 설정되었습니다.`);
+            } else {
+                alert("동네 이름을 입력해주세요.");
+            }
+        });
+
+        // 4. 팝업 바깥 클릭 시 닫기
+        document.addEventListener('click', (e) => {
+            if (!locationPopup.contains(e.target) && e.target !== locationBtn) {
+                locationPopup.style.display = 'none';
+            }
+        });
+    });
+    </script>
+</body>
+</html>

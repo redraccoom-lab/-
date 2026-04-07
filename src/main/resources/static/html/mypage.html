@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PickDeal - 마이페이지</title>
+    <link rel="stylesheet" href="../css/mypage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* 탭 전환을 위한 핵심 스타일 (mypage.css에 없다면 여기에 유지하세요) */
+        .tab-pane {
+            display: none; /* 기본적으로 모든 컨텐츠 숨김 */
+        }
+
+        .tab-pane.active {
+            display: block !important; /* 활성화된 컨텐츠만 표시 */
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="dark-theme"> <div class="container">
+        <header class="page-header">
+            <h1 class="my-page-title">마이페이지</h1>
+        </header>
+
+        <div class="content-wrapper">
+            <aside class="sidebar">
+                <div class="profile-card dark-card">
+                    <div class="profile-icon">
+                        <i class="fa-solid fa-circle-user"></i>
+                    </div>
+                    <h2 class="user-name" id="display-username">사용자 이름</h2>
+                    <div class="user-stats-group">
+                        <p class="user-stats">총 거래 횟수 : 12</p>
+                        <p class="user-stats">평균 평점 : 4.8 <i class="fa-solid fa-star" style="color: #ffd700;"></i></p>
+                    </div>
+                    <button class="logout-btn">로그아웃</button>
+                </div>
+
+                <div class="review-card dark-card">
+                    <h3>받은후기</h3>
+                    <div class="review-item">
+                        <div class="stars">★★★★★</div>
+                        <p>친절한 거래 감사합니다!</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="stars">★★★★☆</div>
+                        <p>상품 상태가 아주 좋아요.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <section class="history-section dark-card">
+                    <h2>거래 내역</h2>
+                    <nav class="history-tabs">
+                        
+                        <span class="tab" data-target="selling">판매중</span>
+                        <span class="tab" data-target="reserved">예약중</span>
+                        <span class="tab" data-target="completed">거래 완료</span>
+                    </nav>
+
+                    <div class="tab-content-container">
+                        <div id="all" class="tab-pane active">
+                            <div class="product-item">
+                                <div class="img-box"><img src="../images/iphone.png" alt="상품 이미지"></div>
+                                <div class="product-info">
+                                    <p class="p-name">iPhone 13 mini Starlight 128G (전체 내역)</p>
+                                    <p class="p-price">450,000원</p>
+                                    <div class="status-badge completed">거래 완료</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="selling" class="tab-pane">
+                            <div class="product-item">
+                                <div class="product-info">
+                                    <p class="p-name" style="color: #888;">현재 판매 중인 물건이 없습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="reserved" class="tab-pane">
+                            <div class="product-item">
+                                <div class="product-info">
+                                    <p class="p-name" style="color: #888;">현재 예약 중인 물건이 없습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="completed" class="tab-pane">
+                            <div class="product-item">
+                                <div class="img-box"><img src="../images/iphone.png" alt="상품 이미지"></div>
+                                <div class="product-info">
+                                    <p class="p-name">iPhone 13 mini Starlight 128G (완료 건)</p>
+                                    <p class="p-price">450,000원</p>
+                                    <div class="status-badge completed">거래 완료</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="my-items-section dark-card" style="margin-top: 30px;">
+                    <h2>내 등록 물건</h2>
+                    <div class="product-item" onclick="location.href='uploade.html'" style="cursor: pointer;">
+    <div class="img-box"><img src="../images/iphone.png" alt="상품 이미지"></div>
+    <div class="product-info">
+        <p class="p-name">iPhone 13 mini Starlight 128G</p>
+        <p class="p-price">450,000원</p>
+        <div class="status-badge completed">거래 완료</div>
+    </div>
+</div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. 사용자 이름 불러오기
+            const displayElement = document.getElementById('display-username');
+            if (displayElement) {
+                const userName = localStorage.getItem('loginUser') || "방문자";
+                displayElement.innerText = userName;
+            }
+
+            // 2. 탭 전환 
+            const tabs = document.querySelectorAll('.tab');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    
+                    if (!targetId) return;
+
+                    // 버튼 활성화 클래스 교체
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // 컨텐츠 표시/숨김 교체
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    const targetPane = document.getElementById(targetId);
+                    if (targetPane) {
+                        targetPane.classList.add('active');
+                    }
+                });
+            });
+
+            // 3. 로그아웃 기능
+            const logoutBtn = document.querySelector('.logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    if(confirm("로그아웃 하시겠습니까?")) {
+                        localStorage.removeItem('loginUser');
+                        location.href = "guestmain.html";
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
